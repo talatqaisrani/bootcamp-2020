@@ -7,8 +7,6 @@ name: deploy website
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,11 +22,11 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: install nodeJS
-      uses:  action/setup-node@v2-beta
+      uses: action/setup-node@v2-beta
       with:
-          node-version: 12
+        node-version: 12
     - name: install surge
       run:  npm install -g surge
     - name: run surge
-      run: surge ./ bootcampnewapp.surge.sh --token ${{secret.abc}}
+      run: surge ./ bootcampnewapp.surge.sh --token ${{ secrets.ABC }}
       
